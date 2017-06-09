@@ -25,12 +25,12 @@ import { MapAnalyzerComponent } from './MapAnalyzer/mapanalyzer.component'
 import { AppComponent }  from './app.component';
 
 export const firebaseConfig = {
-    apiKey: "AIzaSyAdWGPitluhQXf4MTlIX18eHC9P0jDMLiM",
+    apiKey: "something",
     authDomain: "heatmap-f775c.firebaseapp.com",
     databaseURL: "https://heatmap-f775c.firebaseio.com",
     projectId: "heatmap-f775c",
     storageBucket: "heatmap-f775c.appspot.com",
-    messagingSenderId: "549526222991"
+    messagingSenderId: "orother"
   };
 
 @NgModule({
