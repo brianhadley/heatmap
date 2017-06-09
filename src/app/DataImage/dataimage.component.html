@@ -1,0 +1,33 @@
+<div style="width:100%">
+<md-card>
+<md-card-header>    
+<md-card-title>Mapped Image</md-card-title>
+</md-card-header>
+<md-card-content>    
+<svg *ngIf="mappedProperties&&paths"
+     version="1.1" id="Layer_1" 
+     xmlns="http://www.w3.org/2000/svg" 
+     xmlns:xlink="http://www.w3.org/1999/xlink" 
+     x="0px" y="0px" 
+     [attr.viewBox]=computeViewbox()      
+     xml:space="preserve">
+<style type="text/css">
+                {{generateClasses()}}
+</style>
+<path *ngFor="let Path of paths"  
+      [attr.class]="createClass(Path)"
+      [attr.d]="Path.path" 
+      (click)="setSelected(Path)" 
+      stroke-width="5" 
+      [attr.stroke]="Path.stroke"></path>         
+</svg>
+</md-card-content>
+</md-card>
+</div>
+<br/>
+
+<!--todo: pass data in from a class, edited out of application altogether-->
+<table><tr *ngFor="let MapItem of mappedProperties">
+    <td><input [(ngModel)]="MapItem.datakey" /></td>
+    <td><input [(ngModel)]="MapItem.color" /></td>
+</tr></table>

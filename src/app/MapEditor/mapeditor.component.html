@@ -1,0 +1,41 @@
+<br/>
+<div class="flex-container" 
+     fxLayout="column" 
+     fxLayout.xs="row"
+     fxLayoutAlign="center top"
+     fxLayoutAlign.xs="center center">
+     
+  <div class="flex-item" fxFlex="100%" fxFlex.xs="100%">
+        <md-input-container>
+            <input mdInput [(ngModel)]="selectedPath.pathkey" (keypress)="svgChanged()" placeholder="Selected Section ID"/>
+        </md-input-container>
+        <md-input-container>
+            <input mdInput [(ngModel)]="x" placeholder="SVG Width" (keypress)="svgChanged()" />
+        </md-input-container>
+        <md-input-container>
+            <input mdInput [(ngModel)]="y" placeholder="SVG Height" (keypress)="svgChanged()" />
+        </md-input-container>
+        <input type='file' (change)='readSvg($event)'>  
+        <md-select placeholder="Load From DB" (change)="loadNewSvgFromDb($event)">
+            <md-option *ngFor="let svgname of svgnames" 
+                        (onselect)="loadNewSvgFromDb(svgname)"
+                        value={{svgname.key}}>{{svgname.name}}</md-option>
+        </md-select>
+       
+        <button *ngIf="currentAltered" md-raised-button (click)="saveCurrent()">Save to DB</button>   
+  </div>
+  <br/>
+  <div class="flex-item" fxFlex="100%" fxFlex.xs="60%">      
+    <data-image 
+            [paths]="paths"   
+            [mappedProperties]="mappedProperties"
+            [currentSelectedId]="selectedPath.pathkey"
+            [x]="x"
+            [y]="y"
+            (selectedPathChanged)="selectedPathChanged($event)"
+            >
+    </data-image>
+  </div>
+</div>
+
+

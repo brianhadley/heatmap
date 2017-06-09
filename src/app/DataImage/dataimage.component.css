@@ -1,0 +1,12 @@
+@keyframes hideshow {
+  0% { stroke-opacity: 1; }
+  10% { stroke-opacity: .75; }
+  50% { stroke-opacity: .5; }
+  100% { stroke-opacity: 0; }
+} 
+
+.svg-light {
+  animation: hideshow 1s ease infinite;
+  stroke: 'red';
+  stroke-width: 5px;
+}
