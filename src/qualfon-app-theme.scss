@@ -1,0 +1,93 @@
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+$md-qualfon-secondary: (
+    50 : #f6fae7,
+    100 : #e7f2c2,
+    200 : #d8e99a,
+    300 : #c8e072,
+    400 : #bcd953,
+    500 : #b0d235,
+    600 : #a9cd30,
+    700 : #a0c728,
+    800 : #97c122,
+    900 : #87b616,
+    A100 : #f8ffe8,
+    A200 : #e8ffb5,
+    A400 : #d7ff82,
+    A700 : #cfff68,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-qualfon-primary: (
+    50 : #e2ecf4,
+    100 : #b8cfe4,
+    200 : #88afd2,
+    300 : #588fbf,
+    400 : #3577b2,
+    500 : #115fa4,
+    600 : #0f579c,
+    700 : #0c4d92,
+    800 : #0a4389,
+    900 : #053278,
+    A100 : #a7c3ff,
+    A200 : #74a1ff,
+    A400 : #417fff,
+    A700 : #276eff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+
+
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+$qualfon-app-primary: mat-palette($md-qualfon-primary);
+$qualfon-app-accent:  mat-palette($md-qualfon-secondary, 700, 800, 900);
+
+// The warn palette is optional (defaults to red).
+$qualfon-app-warn:    mat-palette($mat-orange);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$qualfon-app-theme: mat-light-theme($qualfon-app-primary, $qualfon-app-accent, $qualfon-app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($qualfon-app-theme);

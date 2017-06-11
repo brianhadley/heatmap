@@ -19,7 +19,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "qualfon-app-theme.scss"
       ],
       "scripts": [
         "../node_modules/xml2js/lib/xml2js.js"
