@@ -8,7 +8,8 @@ import { DataPathSvg } from '../DataPathStorage/datapathsvg'
 
 @Component({
     selector : 'map-editor',
-    templateUrl : './mapeditor.component.html'
+    templateUrl : './mapeditor.component.html',
+    styleUrls: ['./mapeditor.component.css']
 })
 
 export class MapEditorComponent
@@ -19,6 +20,8 @@ export class MapEditorComponent
     selectedPath: DataPath = {addlClass:"",pathkey:"",path:"",stroke:""};
     svgnames: DataPathSvg[] = [];
     currentSvgKey = "";
+    showsidenav = false;
+
 
     selectionIdAssignment: string;
     x: string = "1500";
@@ -45,6 +48,14 @@ export class MapEditorComponent
 
     selectedPathChanged(newPath:DataPath){        
         this.selectedPath = newPath;        
+    }
+
+    openSideNav() {
+        this.showsidenav = true;
+    }
+
+    closeSideNav() {
+        this.showsidenav = false;
     }
 
     readSvg($event : any) : void {

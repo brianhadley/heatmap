@@ -1,39 +1,54 @@
-<md-sidenav-container>
-  <md-sidenav  opened="true" mode="push">
+<md-sidenav-container color="accent">
+    
+  <md-sidenav  [opened]="showsidenav" mode="push" (onClose)="closeSideNav()">
+        <div class="side-nav-content">
+        <button md-mini-fab *ngIf="showsidenav" class="close-side-nav-ctrl" color="accent" (click)="closeSideNav()"><</button>
+        <br/>
+        <h3 md-subheader>Image Settings</h3>    
+        
         <md-input-container color="accent">
-            <input mdInput [(ngModel)]="selectedPath.pathkey" (keypress)="svgChanged()" placeholder="Selected Section ID"/>
+            <input mdInput [(ngModel)]="x" placeholder="Viewbox Width" (keypress)="svgChanged()" />
         </md-input-container>
         <br/>
         <md-input-container color="accent">
-            <input mdInput [(ngModel)]="x" placeholder="SVG Width" (keypress)="svgChanged()" />
+            <input mdInput [(ngModel)]="y" placeholder="Viewbox Height" (keypress)="svgChanged()" />
         </md-input-container>
         <br/>
-        <md-input-container color="accent">
-            <input mdInput [(ngModel)]="y" placeholder="SVG Height" (keypress)="svgChanged()" />
-        </md-input-container>
-        <br/>
-        <input type='file' (change)='readSvg($event)'>  
-        <br/>
+        
+        <h3 md-subheader>Image I/O</h3>
         <md-select placeholder="Load From DB" (change)="loadNewSvgFromDb($event)" color="accent">
             <md-option *ngFor="let svgname of svgnames" 
                         (onselect)="loadNewSvgFromDb(svgname)"
                         value={{svgname.key}}>{{svgname.name}}</md-option>
         </md-select>
-       
-        <button *ngIf="currentAltered" md-raised-button (click)="saveCurrent()" color="accent">Save to DB</button>   
+        <br/>
+        <label md-raised-button for='file' class="mat-raised-button mat-accent">Load New SVG</label>  
+        <br/>
+        <button *ngIf="currentAltered" md-raised-button (click)="saveCurrent()" color="accent">Changes to DB</button>   
+        </div>
   </md-sidenav>
   <!--todo - extract the card-->
-    <data-image 
-            [paths]="paths"   
-            [mappedProperties]="mappedProperties"
-            [currentSelectedId]="selectedPath.pathkey"
-            [x]="x"
-            [y]="y"
-            (selectedPathChanged)="selectedPathChanged($event)"
-            >
-    </data-image>
+       <md-card class="selection-editor-card">
+           <md-input-container color="accent">
+            <input mdInput [(ngModel)]="selectedPath.pathkey" (keypress)="svgChanged()" placeholder="Selected Section ID"/>
+        </md-input-container>
+       </md-card>
+       <button md-mini-fab *ngIf="!showsidenav" class="open-side-nav-ctrl" color="accent" (click)="openSideNav()">></button>
+       <div class="data-image-content">
+       <data-image 
+             [paths]="paths"   
+             [mappedProperties]="mappedProperties"
+             [currentSelectedId]="selectedPath.pathkey"
+             [x]="x"
+             [y]="y"
+             (selectedPathChanged)="selectedPathChanged($event)"             
+             >
+        </data-image>
+        </div>
 </md-sidenav-container>
 
+        <input type='file' (change)='readSvg($event)' class="inputfile" name="file" id="file">
+    
 <!--div class="flex-container" 
      fxLayout="column" 
      fxLayout.xs="row"

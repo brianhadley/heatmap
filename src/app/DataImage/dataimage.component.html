@@ -1,15 +1,10 @@
-<div style="width:100%">
-<md-card>
-<md-card-header>    
-<md-card-title>Mapped Image</md-card-title>
-</md-card-header>
-<md-card-content>    
+<div style="width:100%">    
 <svg *ngIf="mappedProperties&&paths"
      version="1.1" id="Layer_1" 
      xmlns="http://www.w3.org/2000/svg" 
      xmlns:xlink="http://www.w3.org/1999/xlink" 
      x="0px" y="0px" 
-     [attr.viewBox]=computeViewbox()      
+     [attr.viewBox]=computeViewbox()    
      xml:space="preserve">
 <style type="text/css">
                 {{generateClasses()}}
@@ -21,8 +16,7 @@
       stroke-width="5" 
       [attr.stroke]="Path.stroke"></path>         
 </svg>
-</md-card-content>
-</md-card>
+
 </div>
 <br/>
 

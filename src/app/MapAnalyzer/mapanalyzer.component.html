@@ -1,1 +1,37 @@
-MAP ANALYZER
+ <md-sidenav-container color="accent">
+ 
+ <md-sidenav  [opened]="showsidenav" mode="push" (onClose)="closeSideNav()">
+        <div class="side-nav-content">
+        <button md-mini-fab *ngIf="showsidenav" class="close-side-nav-ctrl" color="accent" (click)="closeSideNav()"><</button>
+        <br/>
+        <h3 md-subheader>Image Settings</h3>    
+        
+        <md-input-container color="accent">
+            <input mdInput [(ngModel)]="x" placeholder="Viewbox Width" (keypress)="svgChanged()" />
+        </md-input-container>
+        <br/>
+        <md-input-container color="accent">
+            <input mdInput [(ngModel)]="y" placeholder="Viewbox Height" (keypress)="svgChanged()" />
+        </md-input-container>
+        <br/>
+        
+        <h3 md-subheader>Image I/O</h3>
+        <md-select placeholder="Load From DB" (change)="loadNewSvgFromDb($event)" color="accent">
+            <md-option *ngFor="let svgname of svgnames" 
+                        (onselect)="loadNewSvgFromDb(svgname)"
+                        value={{svgname.key}}>{{svgname.name}}</md-option>
+        </md-select>
+        <br/>
+        <label md-raised-button for='datafile' class="mat-raised-button mat-accent">Load Data</label>  
+        <br/>
+        <button *ngIf="currentAltered" md-raised-button (click)="saveCurrent()" color="accent">Changes to DB</button>   
+        </div>
+  </md-sidenav>
+      <button md-mini-fab *ngIf="!showsidenav" class="open-side-nav-ctrl" color="accent" (click)="openSideNav()">></button>
+       <div class="data-image-content">
+      
+        </div>
+ </md-sidenav-container>
+
+ <input type='file' (change)='readCsv($event)' class="inputfile" name="datafile" id="datafile">
+    

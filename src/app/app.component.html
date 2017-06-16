@@ -1,9 +1,8 @@
-    <md-toolbar color="primary">
-    <span>SVG Data Mapping Utility</span>
+<md-toolbar color="primary" class='top-nav mat-elevation-z6'>
+    <button md-icon-button><img height="33px" width="38px" src="../../assets/map-icon-329x300.png" /></button>
+    <a md-button routerLink="/map-analyzer"  aria-disabled="false">SVG MAPPING UTILITY</a>
+    <a md-button routerLink="/map-analyzer" color="accent" aria-disabled="false">ANALYZE</a>
+     <a md-button routerLink="/map-editor" color="accent">CREATE</a>      
 </md-toolbar>
-    <nav md-tab-nav-bar>
-      <a md-tab-link routerLink="/map-analyzer" color="accent">Analyze</a>
-      <a md-tab-link routerLink="/map-editor" routerLinkActive="active">Edit</a>
-    </nav>
-
+    
 <router-outlet></router-outlet>
